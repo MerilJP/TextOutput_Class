@@ -14,7 +14,8 @@ void TextOutput::WriteText(std::string Title, std::string TextMain)
 	std::ofstream ofs;
 
 	//拡張子が指定されていなければ追加
-	this->addExtension(Title);
+	Title = this->addExtension(Title);
+
 	//出力ファイル名
 	ofs.open(Title, std::ios::out);
 	//ファイルを出力
@@ -23,13 +24,13 @@ void TextOutput::WriteText(std::string Title, std::string TextMain)
 	ofs.close();
 }
 
-//引数:(タイトル,本文,パス)
+//引数:(タイトル,本文,出力パス)
 void TextOutput::WriteText(std::string Title, std::string TextMain, int Path)
 {
 	std::ofstream ofs;
 	
 	//拡張子が指定されていなければ追加
-	this->addExtension(Title);
+	Title = this->addExtension(Title);
 
 	//出力パス
 	switch (Path)
@@ -71,7 +72,7 @@ std::string TextOutput::getDeskPath()
 }
 
 //ファイル拡張子の追加
-void TextOutput::addExtension(std::string Title)
+std::string TextOutput::addExtension(std::string Title)
 {
 	//拡張子が設定されていなければ末尾に追加する
 	std::string::size_type ret = Title.find(".txt");
@@ -79,4 +80,6 @@ void TextOutput::addExtension(std::string Title)
 	{
 		Title = Title + ".txt";
 	}
+
+	return Title;
 }

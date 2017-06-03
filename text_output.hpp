@@ -1,4 +1,3 @@
-#include <iostream>
 #include <fstream>
 #include <shlobj.h>
 #include <string>
@@ -8,7 +7,6 @@ enum
 {
   DESKTOP
 };
-
 
 #ifndef __TEXTOUTPRINT_H_
 #define __TEXTOUTPRINT_H_
@@ -33,7 +31,7 @@ private:
 	//デスクトップのパスを取得
 	std::string getDeskPath();
 	//拡張子が指定されていなければ追加
-	void addExtension(std::string);
+	std::string addExtension(std::string);
 
 };
 #endif
